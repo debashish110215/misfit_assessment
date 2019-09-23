@@ -11,10 +11,10 @@ namespace Misfit.CORE.ViewModels
         [Required]
         public string UserName { get; set; }
         [Required]
-        [RegularExpression(@"^-?\d*\.?\d*", ErrorMessage = "Invalid Number")]
+        [RegularExpression(@"^[+/-]?(0|[1-9]\d*)(\.\d+)?$", ErrorMessage = "Invalid Number")]
         public string Num1 { get; set; }
         [Required]
-        [RegularExpression(@"^-?\d*\.?\d*", ErrorMessage = "Invalid Number")]
+        [RegularExpression(@"^[+/-]?(0|[1-9]\d*)(\.\d+)?$", ErrorMessage = "Invalid Number")]
         public string Num2 { get; set; }
         public string Sum { get; set; }
     }
