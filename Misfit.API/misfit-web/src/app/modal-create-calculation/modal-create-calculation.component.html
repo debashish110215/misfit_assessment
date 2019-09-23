@@ -31,7 +31,7 @@
                 <input matInput type="text" placeholder="Number 2" formControlName="num2">
                 <mat-error *ngIf="hasError('num2', 'required')">Number 2 is required with a valid number</mat-error>
                 <mat-error *ngIf="hasError('num2', 'maxlength')">You have more than 100 characters</mat-error>
-                <mat-error *ngIf="hasError('num1', 'pattern')">
+                <mat-error *ngIf="hasError('num2', 'pattern')">
                   valid: 0.1234/123.555/-1.5; invalid: -01.123, 00.324, 1..4, 12., No character.
                 </mat-error>
                 </mat-form-field>
