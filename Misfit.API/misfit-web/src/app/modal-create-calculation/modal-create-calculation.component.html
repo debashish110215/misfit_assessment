@@ -1,0 +1,51 @@
+
+<div class="col-sm-12 text-center">
+        <h1 mat-dialog-title>Make your Calcuation & Store</h1>
+        <hr>
+</div>
+
+
+<form [formGroup]="calForm" autocomplete="off" novalidate (ngSubmit)="createCal(calForm.value)" fxLayout="column wrap"
+      fxLayoutAlign="center center" fxLayoutGap="10px">
+    <div mat-dialog-content>
+            <input type="hidden" formControlName="userId" id="userId">
+                <span *ngIf="isUserExists" class="warning" style="color: tan">
+                        The User is previously stored. In that case the calculation will be associated with the user. Otherwise, change the user name.
+                </span>
+            <mat-form-field>
+                <input matInput type="text" placeholder="User name" (blur)="checkUserExistence($event.target.value)" formControlName="name" id="name">
+                <mat-error *ngIf="hasError('name', 'required')">User Name is required</mat-error>
+                <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 60 characters</mat-error>
+                <!-- <mat-error *ngIf="isUserExists">The User is previously stored. in that case the calculation will be associated with the user. otherwise, please change the user name.</mat-error> -->
+            </mat-form-field>
+                
+            <mat-form-field>
+              <input matInput type="text" placeholder="Number 1" formControlName="num1"><!--ng-pattern="/^-?(0|[1-9]\d*)(\.\d+)?$/"-->
+              <mat-error *ngIf="hasError('num1', 'required')">Number 1 is required with a valid number</mat-error>
+              <mat-error *ngIf="hasError('num1', 'maxlength')">You have more than 100 characters</mat-error>
+              <mat-error *ngIf="hasError('num1', 'pattern')"> valid: 0.1234/123.555/-1.5; invalid: -01.123, 00.324, 1..4, 12., No character.
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="text" placeholder="Number 2" formControlName="num2">
+                <mat-error *ngIf="hasError('num2', 'required')">Number 2 is required with a valid number</mat-error>
+                <mat-error *ngIf="hasError('num2', 'maxlength')">You have more than 100 characters</mat-error>
+                <mat-error *ngIf="hasError('num1', 'pattern')">
+                  valid: 0.1234/123.555/-1.5; invalid: -01.123, 00.324, 1..4, 12., No character.
+                </mat-error>
+                </mat-form-field>
+            <mat-form-field >
+                <input matInput type="text" [readonly]="isCalculated" placeholder="Sum (readonly)" formControlName="sum">
+            </mat-form-field>
+    </div>
+    <!-- <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+    </div> -->
+    
+<mat-dialog-actions >
+        <button mat-button color="primary" [disabled]="!calForm.valid || submitted">Calculate & Submit</button>
+        <button mat-button color="warn" (click)="onNoClick()">Close Calculation</button>
+</mat-dialog-actions>
+</form>
