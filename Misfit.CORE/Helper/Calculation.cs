@@ -102,10 +102,11 @@ namespace Misfit.CORE.Helper
             // var num3 = Get10sComplement(num2);
             // bool hasCarry = false;
             //bool negativeSign = num1.Contains("-") || num2.Contains("-");
+            string sign = "";
             if(num1.Contains("-") && num2.Contains("-") || (!num1.Contains("-") && !num2.Contains("-")))
                 sum += CalculateSumWithoutDec(num1, num2);
             else
-                sum = Subtract(num1, num2);
+                (sign,sum) = Subtract(num1, num2);
             //if (negativeSign)
             //    sum = Subtract(num1, num2);
             //else
@@ -115,14 +116,14 @@ namespace Misfit.CORE.Helper
             //     sum = "-" + sum.Remove(0, 1);
             // else
             //     sum = Get10sComplement(sum);
-            if (String.IsNullOrEmpty(sum))
-                sum = "0";
-            else if (dotPoint > 0)
+            //if (String.IsNullOrEmpty(sum))
+            //    sum = "0";
+            if (dotPoint > 0)
                 sum = sum.Insert(sum.Length - dotPoint, ".");
 
-            return sum;
+            return sign + (String.IsNullOrEmpty(sum.TrimStart('0')) ? "0" : sum.TrimStart('0'));
         }
-        public static string Subtract(string orgx1, string orgx2)
+        public static (string,string) Subtract(string orgx1, string orgx2)
         {
             string x1 = orgx1, x2 = orgx2;
             string result = "";
@@ -242,7 +243,7 @@ namespace Misfit.CORE.Helper
             str = new string(ch2);
 
 
-            return result + str.TrimStart('0');
+            return (result , str);
         }
 
         public static (string, string) interchange(string x1, string x2)
