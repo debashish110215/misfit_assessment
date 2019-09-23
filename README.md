@@ -25,3 +25,6 @@ Adding 2 big numbers, which won't fit to any .NET type
 * before that change the connection string on ‘appsettings.json’ with your Data Source, User Id and Password.
 * if migration not worked for you, restore the 'MisfitDB.bak' and change the connection string into
 	'appsettings.json' file. then run and enjoy :)
+
+### Thinks to mention: 
+* If you see any time out error in web browser, don't panic. please refresh the page again. It'll work again. It can be happened for the cli run
