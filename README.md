@@ -13,7 +13,8 @@ Adding 2 big numbers, which won't fit to any .NET type
 
 
 ### Features:
-
+* Add any two numbers no matter how big the numbers are no 
+* Server side & Client side validation (both)
 * Server side pagination
 * Quick add from modal
 
@@ -22,5 +23,5 @@ Adding 2 big numbers, which won't fit to any .NET type
 * Clean the project using ide. 
 * build and run 'update-migration -verbose' from package manager console to create database.  
 * before that change the connection string on ‘appsettings.json’ with your Data Source, User Id and Password.
-* if migration not worked for you, restore the MisfitDB.bak and change the connection string into
-	appsettings.json file. then run and enjoy :)
+* if migration not worked for you, restore the 'MisfitDB.bak' and change the connection string into
+	'appsettings.json' file. then run and enjoy :)
