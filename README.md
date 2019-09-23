@@ -1,4 +1,5 @@
 Adding 2 big numbers, which won't fit to any .NET type
+/n
 Prerequisites: 
 •	Visual Studio 2019
 •	.Net Core 2.2 SDK
@@ -9,7 +10,16 @@ Prerequisites:
 •	Angular Material 8.2.0
 •	SQL SQLEXPRESS 12
 
+/n
+
 Features:
 . Server side pagination
 . Quick add from modal
-Clone the project. Clean the project using ide. build and run 'update-migration -verbose' from package manager console to create database.  before that change the connection string on ‘appsettings.json’ with your Data Source, User Id and Password.
+
+How to run:
+-> Clone the project. 
+-> Clean the project using ide. 
+-> build and run 'update-migration -verbose' from package manager console to create database.  
+-> before that change the connection string on ‘appsettings.json’ with your Data Source, User Id and Password.
+-> if migration not worked for you, restore the MisfitDB.bak and change the connection string into
+	appsettings.json file. then run and enjoy :)
