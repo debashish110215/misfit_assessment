@@ -23,8 +23,8 @@ Adding 2 big numbers, which won't fit to any .NET type
 ### Installation: 
 * Clone the project. 
 * Clean the project using ide. 
+* Change the connection string on ‘appsettings.json’ with your Data Source, User Id and Password.
 * Build and select 'Misfit.DA' as default project and run 'update-database -verbose' from package manager console to create a blank database.  
-* Before that change the connection string on ‘appsettings.json’ with your Data Source, User Id and Password.
 * If migration not worked for you, restore the 'MisfitDB.bak' with some dummy data and change the connection string into
 	'appsettings.json' file. then run and enjoy :)
 
