@@ -77,7 +77,6 @@ namespace Misfit.CORE.Helper
 
             num1 = num1.Replace("+", "");
             num2 = num2.Replace("+", "");
-            bool negativeSign = num1.Contains("-") || num2.Contains("-");
             
 
             string[] num1DecPoints = num1.Split('.');
@@ -102,16 +101,21 @@ namespace Misfit.CORE.Helper
             num2 = num2DecPoints[0] + num2DecDigits;
             // var num3 = Get10sComplement(num2);
             // bool hasCarry = false;
-            if (negativeSign)
-                sum = Subtract(num1, num2);
-            else
+            //bool negativeSign = num1.Contains("-") || num2.Contains("-");
+            if(num1.Contains("-") && num2.Contains("-") || (!num1.Contains("-") && !num2.Contains("-")))
                 sum += CalculateSumWithoutDec(num1, num2);
+            else
+                sum = Subtract(num1, num2);
+            //if (negativeSign)
+            //    sum = Subtract(num1, num2);
+            //else
+            //    sum += CalculateSumWithoutDec(num1, num2);
 
             // if (hasCarry)
             //     sum = "-" + sum.Remove(0, 1);
             // else
             //     sum = Get10sComplement(sum);
-            if(String.IsNullOrEmpty(sum))
+            if (String.IsNullOrEmpty(sum))
                 sum = "0";
             else if (dotPoint > 0)
                 sum = sum.Insert(sum.Length - dotPoint, ".");
@@ -165,7 +169,7 @@ namespace Misfit.CORE.Helper
                     }
                     else
                     {
-                        result += "-";
+                        //result += "-";
                         (x1, x2) = interchange(x1, x2);
                     }
                 }
