@@ -5,6 +5,8 @@ Adding 2 big numbers, which won't fit to any .NET type
 *	Visual Studio 2019
 *	.Net Core 2.2 SDK
 *   CLI 8.3.5
+*	.nodejs
+* 	npm
 *	EntityFrameworkCore
 *	Angular 8.
 *	Bootstarp 4
