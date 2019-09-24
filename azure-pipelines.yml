@@ -35,3 +35,30 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+pool:
+  vmImage: 'ubuntu-16.04'
+strategy:
+  matrix:
+    node_8_x:
+      node_version: 8.x
+    node_9_x:
+      node_version: 9.x
+
+steps:
+- task: NodeTool@0 
+  inputs:
+    versionSpec: $(node_version)
+
+- script: npm install
+- script: npm install --only=dev
+- script: npm install -g @angular/cli
+- script: npm install
+- script: npm run compile
+- script: |
+    ng build --prod
+    - script: |
+    npm install webpack webpack-cli --save-dev
+    npx webpack --config webpack.config.js
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
